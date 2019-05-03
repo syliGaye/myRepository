@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="itcApp" ng-controller="itcCtrl">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/ico" href="img/itc-icon.png" />
+
+    <title>ITC | Sessions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="http://itc-ci.com" />
+    <!-- css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <link href="js/vendor/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="pull-left hidden-xs">Email: info@itc-ci.com</p>
+                    <p class="pull-right"><i class="fa fa-phone"></i>Tel No. +225 23 466 195</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start header -->
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"/></a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">Pr&eacute;sentation </a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li class="active"><a href="formations.html">Formation</a></li>
+                        <li><a href="gallery.html">Gal&eacute;rie</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- end header -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="pageTitle">Sessions</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-logo">
+                        <h1 class="text-center">Les Sessions de Formation</h1>
+                        <div class="input-group input-group-lg col-md-3">
+                            <select class="form-control mb-10" name="selectGenreFormation" id="selectGenreFormation">
+                                <option value="1">Formations à reserver</option>
+                                <option value="2">Formations programmées</option>
+                            </select>
+                        </div>
+
+                        <div class="row" id="sessionNonPrgm">
+                            <div class="section m-0 pt-0">
+                                <div class="container clearfix">
+                                    <div class="table-responsive">
+                                        <form role="form">
+                                            <div class="input-group input-group-lg col-md-3">
+                                                <input id="filtrerAffichage" type="text" class="form-control input-3d" ng-model="filtreDelAffichage"  placeholder="Filtrer la liste ici" required>
+                                            </div>
+                                        </form><br/>
+
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center" style="width:60px;"> #</th>
+                                                <th class="text-center" style="width:90px;"> &Eacute;quipement</th>
+                                                <th class="text-center"> Formation</th>
+                                                <th class="text-center">Certification</th>
+                                                <th class="text-center"> Places Prevues</th>
+                                                <th class="text-center"> Places Restantes</th>
+                                                <th class="text-center"> Reservations</th>
+                                                <th class="text-center"> Co&ucirc;t</th>
+                                                <th style="width:100px;" class="no-sort"></th>
+                                                <th style="width:150px;" class="no-sort"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody ng-repeat="lss in lesSessions | filter:filtreDelAffichage">
+                                            <tr>
+                                                <td class="text-center">{{lss.idSession}}</td>
+                                                <td class="text-center">{{lss.techno}}</td>
+                                                <td class="text-center">{{lss.titre}}</td>
+                                                <td class="text-center">{{lss.certif}}</td>
+                                                <td class="text-center">{{lss.nbreDePlaces}}</td>
+                                                <td class="text-center">{{lss.placesRestantes}}</td>
+                                                <td class="text-center">{{lss.reservation}}</td>
+                                                <td class="text-center">{{lss.prix}}</td>
+                                                <td class="text-center"><a href="#" class="btn btn-xs btn-theme mr-5 plusInfoSession" id="{{lss.idSession}}"><i class="fa fa-plus"> d'info</i></a></td>
+                                                <td class="text-center"><a href="#" class="btn btn-xs btn-theme mr-5 sInscrireSession" id="{{lss.idSession}}"><!--<i class="fa fa-eye"></i>-->Reserver</a></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div><!-- /comparison table section -->
+
+                        </div>
+
+                        <div class="row" id="sessionPrgm" hidden>
+                            <div class="section m-0 pt-0">
+                                <div class="container clearfix">
+                                    <div class="table-responsive">
+                                        <form role="form">
+                                            <div class="input-group input-group-lg col-md-3">
+                                                <input id="filtrerProgramme" type="text" class="form-control input-3d" ng-model="filtreDelProgramme"  placeholder="Filtrer la liste ici" required>
+                                            </div>
+                                        </form><br/>
+
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center" style="width:60px;"> #</th>
+                                                <th class="text-center" style="width:90px;"> &Eacute;quipement</th>
+                                                <th class="text-center"> Formation</th>
+                                                <th class="text-center">Certification</th>
+                                                <th class="text-center"> Date de Debut</th>
+                                                <th class="text-center"> Date de Fin</th>
+                                                <th class="text-center"> Participants</th>
+                                                <th class="text-center"> Prix</th>
+                                                <th style="width:100px;" class="no-sort"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody ng-repeat="ssPgr in sessionPrgm | filter:filtreDelProgramme">
+                                            <tr>
+                                                <td class="text-center">{{ssPgr.idSession}}</td>
+                                                <td class="text-center">{{ssPgr.techno}}</td>
+                                                <td class="text-center">{{ssPgr.titre}}</td>
+                                                <td class="text-center">{{ssPgr.certif}}</td>
+                                                <td class="text-center">{{ssPgr.dateDebut}}</td>
+                                                <td class="text-center">{{ssPgr.dateFin}}</td>
+                                                <td class="text-center">{{ssPgr.participants}}</td>
+                                                <td class="text-center">{{ssPgr.prix}}</td>
+                                                <td class="text-center"><a href="#" class="btn btn-xs btn-theme mr-5 plusInfoSession" id="{{ssPgr.idSession}}"><i class="fa fa-plus"> d'info</i></a></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div><!-- /comparison table section -->
+
+                        </div>
+                    </div>
+                    <div class="about-logo">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="souscrireModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="souscrireModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="souscrireModalLongBody">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="souscrireBtnModalNon" class="btn btn-secondary" data-dismiss="modal"> Non</button>
+                    <button type="button" id="souscrireBtnModalOui" class="btn btn-primary"> Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="sessionsModalLoader" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-keyboard="false" backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="content">
+                <img class="m-40" src="img/loader.gif"/>
+                <button type="submit" id="btSessionCloseModal" class="btn btn-online-primary pull-right m-10" data-dismiss="modal">Fermer</button><br />
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="participeModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center" id="participeModalLongTitle"><strong> Nouvelle reservation</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="participeModalLongBody" style="max-height: calc(100vh - 210px); overflow-y: auto;">
+                    <form name="formSouscrire" id="formSouscrire" role="form">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="nomSouscrire">Nom <span class="text-lightred" style="font-size: 15px">*</span></label>
+                                <input name="nomSouscrire" type="text" class="form-control myInput" id="nomSouscrire" placeholder="Nom"
+                                       data-parsley-trigger="change"
+                                       required>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="prenomSouscrire">Prenoms <span class="text-lightred" style="font-size: 15px">*</span></label>
+                                <input name="prenomSouscrire" type="text" class="form-control myInput" id="prenomSouscrire" placeholder="Prenoms"
+                                       data-parsley-trigger="change"
+                                       required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="emailSouscrire">Email <span class="text-lightred" style="font-size: 15px">*</span></label>
+                                <input name="emailSouscrire" type="email" class="form-control myInput" id="emailSouscrire" placeholder="exempl@exemple.exemple"
+                                       data-parsley-trigger="change"
+                                       required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="phoneSouscrire">T&eacute;l&eacute;phone <span class="text-lightred" style="font-size: 15px">*</span></label>
+                                <input name="phoneSouscrire" type="tel" class="form-control myInput" id="phoneSouscrire" placeholder="(+XXX) XXX XXX XX"
+                                       data-parsley-trigger="change"
+                                       required>
+                            </div>
+                            <input type="hidden" name="idSessionSouscrire" id="idSessionSouscrire"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="participeBtnModalNon" class="btn btn-secondary" data-dismiss="modal"> Annuler</button>
+                    <button type="button" id="participeBtnModalOui" class="btn btn-primary"> Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile-body" style="display: none ;">
+
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="closeButton">
+                        <input id="closeButton" type="checkbox" value="checked"><i></i> Close Button
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="addBehaviorOnToastClick">
+                        <input id="addBehaviorOnToastClick" type="checkbox" value="checked"><i></i> Add behavior on toast click
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="debugInfo">
+                        <input id="debugInfo" type="checkbox" value="checked"><i></i> Debug
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="progressBar">
+                        <input id="progressBar" type="checkbox" value="checked"><i></i> Progress Bar
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="preventDuplicates">
+                        <input id="preventDuplicates" type="checkbox" value="checked"><i></i> Prevent Duplicates
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="addClear">
+                        <input id="addClear" type="checkbox" value="checked"><i></i> Add button to force clearing a toast, ignoring focus
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="newestOnTop">
+                        <input id="newestOnTop" type="checkbox" value="checked"><i></i> Newest on top
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group" id="toastTypeGroup">
+                    <label>Toast Type</label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="success" checked /><i></i> Success
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="info" /><i></i> Info
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="warning" /><i></i> warning
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="error" /><i></i> Error
+                    </label>
+                </div>
+                <div class="form-group" id="positionGroup">
+                    <label>Position</label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-right" checked /><i></i> Top Right
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-right" /><i></i> Bottom Right
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-left" /><i></i> Bottom Left
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-left" /><i></i> Top Left
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-full-width"/><i></i> Top Full Width
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-full-width"/><i></i> Bottom Full Width
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-center"/><i></i> Top Center
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-center"/><i></i> Bottom Center
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="showEasing">Show Easing</label>
+                    <input id="showEasing" type="text" placeholder="swing, linear" class="form-control" value="swing" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideEasing">Hide Easing</label>
+                    <input id="hideEasing" type="text" placeholder="swing, linear" class="form-control" value="linear" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="showMethod">Show Method</label>
+                    <input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" class="form-control" value="fadeIn" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideMethod">Hide Method</label>
+                    <input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" class="form-control" value="fadeOut" />
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="showDuration">Show Duration</label>
+                    <input id="showDuration" type="text" placeholder="ms" class="form-control" value="300" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideDuration">Hide Duration</label>
+                    <input id="hideDuration" type="text" placeholder="ms" class="form-control" value="1000" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="timeOut">Time out</label>
+                    <input id="timeOut" type="text" placeholder="ms" class="form-control" value="5000" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="extendedTimeOut">Extended time out</label>
+                    <input id="extendedTimeOut" type="text" placeholder="ms" class="form-control" value="1000" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
+                <button type="button" class="btn btn-danger" id="cleartoasts">Clear Toasts</button>
+                <button type="button" class="btn btn-danger" id="clearlasttoast">Clear Last Toast</button>
+            </div>
+        </div>
+
+        <div class="row" style='margin-top: 25px;'>
+            <div class="col-md-12">
+                <pre id='toastrOptions'></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div id="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="copyright">
+                            <p>&copy; Copyright 2017 by <a href="../index.html">IT Consulting</a>. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="social-links" style="margin-top: -10px; margin-right: -30px;">
+                            <li class="twitter-link smallrightmargin">
+                                <a href="#" data-placement="top" class="twitter rotate has-tip" target="_blank" title="Follow Us on Twitter">Twitter</a>
+                            </li>
+                            <li class="facebook-link smallrightmargin">
+                                <a href="#" data-placement="top" class="facebook rotate has-tip" target="_blank" title="Join us on Facebook">Facebook</a>
+                            </li>
+                            <li class="linkedin-link smallrightmargin">
+                                <a href="#" data-placement="top" class="linkedin rotate has-tip" title="Linkedin" target="_blank">Linkedin</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/angular/angular.min.js"></script>
+<script src="js/vendor/angular-route/angular-route.min.js"></script>
+<script src="js/vendor/jquery.easing.1.3.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/jquery.fancybox-media.js"></script>
+<script src="js/vendor/jquery.flexslider.js"></script>
+<script src="js/vendor/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="js/vendor/modernizr.custom.js"></script>
+<script src="js/vendor/toastr/toastr.min.js"></script>
+<script src="js/vendor/jquery.isotope.min.js"></script>
+<script src="js/vendor/jquery.magnific-popup.min.js"></script>
+<script src="js/vendor/animate.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/ang.js"></script>
+<script src="js/sessions.js"></script>
+</body>
+</html>

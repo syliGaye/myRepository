@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/ico" href="img/itc-icon.png" />
+
+    <title>ITC | Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="http://itc-ci.com" />
+    <!-- css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <!-- Vendor Styles -->
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="js/vendor/toastr/toastr.min.css" rel="stylesheet">
+    <!-- Block Styles -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/gallery-1.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="pull-left hidden-xs">Email: info@itc-ci.com</p>
+                    <p class="pull-right"><i class="fa fa-phone"></i>Tel No. +225 23 466 195</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start header -->
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"/></a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#">Pr&eacute;sentation </a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="formations.html">Formation</a></li>
+                        <li><a href="gallery.html">Gal&eacute;rie</a></li>
+                        <li class="active"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- end header -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="pageTitle">Nous Contacter</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA-S3ib5vUPfPV6XTNzW5ftE0xsc2vsv-Y&sensor=false"></script>
+                    <div style="overflow:hidden;height:400px;width: auto;">
+                        <div id="gmap_canvas" style="height:400px;width: auto;"></div>
+                        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+                        <a class="google-map-code" href="http://www.itc-ci.com" id="get-map-data">ITC</a>
+                    </div>
+                    <script type="text/javascript">
+                        function init_map(){
+                            var myOptions = {
+                                zoom:14,
+                                center:new google.maps.LatLng(5.336961,-4.100733),
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+                            map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                            marker = new google.maps.Marker({
+                                map: map,
+                                position: new google.maps.LatLng(5.336961, -4.100733)
+                            });
+                            infowindow = new google.maps.InfoWindow({content:"<b>ITC</b><br/>Maroc Anador, Yopougon<br/> C&ocirc;te d&#39;Ivoire" });
+                            google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
+                            infowindow.open(map,marker);
+                        }google.maps.event.addDomListener(window, 'load', init_map);
+                    </script>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>&nbsp;&nbsp;</p>
+
+                    <!-- Form itself -->
+                    <form name="sentMessage" id="contactForm"  novalidate>
+                        <h3>Nous Contacter</h3>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control"
+                                       placeholder="Nom et Prénoms" id="nameContact" required
+                                       data-validation-required-message="Please enter your name" />
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="email" class="form-control" placeholder="Email"
+                                       id="emailContact" required
+                                       data-validation-required-message="Please enter your email" />
+                            </div>
+                        </div>
+
+                        <div class="control-group mt-10">
+                            <div class="controls">
+                                <textarea rows="10" cols="100" class="form-control"
+                                          placeholder="Message" id="msgContact" required
+                                          data-validation-required-message="Please enter your message" minlength="5"
+                                          data-validation-minlength-message="Min 5 characters"
+                                          maxlength="999" style="resize:none"></textarea>
+                            </div>
+                        </div>
+                        <div id="success"> </div> <!-- For success/fail messages -->
+
+                    </form>
+                    <button type="submit" id="btSendMail" class="btn btn-online-primary pull-right m-10">Envoyer</button><br />
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <h3 class="text-uppercase">Localit&eacute;</h3>
+
+                        <address>
+                            <strong class="text-theme">IT Consulting</strong><br>
+                            Yopougon Maroc Carrefour ANADOR<br>
+                            Abidjan, C&ocirc;te d'Ivoire<br>
+
+                            <strong class="block mt-20">T&eacute;l&eacute;phone:</strong>
+                            Fixe: +225 23 466 195<br>
+                            Cel: +225 08 319 400
+
+                            <strong class="block mt-20">Email:</strong>
+                            <a href="#">info@itc-ci.com</a><!--<br>
+                                    <a href="#">support@tattek.sk</a>-->
+
+                            <div class="social mt-40 mb-10">
+                                <ul class="social-network" style="margin-left: -10px">
+                                    <li style="border: 1px solid #415b92;"><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook" style="color: #415b92;"></i></a></li>
+                                    <li style="border: 1px solid #10A3C3;"><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter" style="color: #10A3C3;"></i></a></li>
+                                    <li style="border: 1px solid #007fc5;"><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" style="color: #007fc5;"></i></a></li>
+                                </ul>
+
+                            </div>
+                        </address><br/>
+
+                        <h3 class="text-uppercase">Heures <span class="text-theme">Ouverture</span></h3>
+
+                        <address>
+                            <strong>Lundi au Vendredi:</strong> 8:00 - 19:30<br>
+                            <strong>Samedi:</strong> 8:00 - 16:00<br>
+                            <strong>Dimanche:</strong> Ferm&eacute;
+                        </address>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="contactModalLoader" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-keyboard="false" backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="content">
+                <img class="m-40" src="img/loader.gif"/>
+                <button type="submit" id="btCloseModal" class="btn btn-online-primary pull-right m-10" data-dismiss="modal">Fermer</button><br />
+            </div>
+        </div>
+    </div>
+
+    <div class="tile-body" style="display: none ;">
+
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="closeButton">
+                        <input id="closeButton" type="checkbox" value="checked"><i></i> Close Button
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="addBehaviorOnToastClick">
+                        <input id="addBehaviorOnToastClick" type="checkbox" value="checked"><i></i> Add behavior on toast click
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="debugInfo">
+                        <input id="debugInfo" type="checkbox" value="checked"><i></i> Debug
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="progressBar">
+                        <input id="progressBar" type="checkbox" value="checked"><i></i> Progress Bar
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="preventDuplicates">
+                        <input id="preventDuplicates" type="checkbox" value="checked"><i></i> Prevent Duplicates
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="addClear">
+                        <input id="addClear" type="checkbox" value="checked"><i></i> Add button to force clearing a toast, ignoring focus
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm" for="newestOnTop">
+                        <input id="newestOnTop" type="checkbox" value="checked"><i></i> Newest on top
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group" id="toastTypeGroup">
+                    <label>Toast Type</label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="success" checked /><i></i> Success
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="info" /><i></i> Info
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="warning" /><i></i> warning
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="toasts" value="error" /><i></i> Error
+                    </label>
+                </div>
+                <div class="form-group" id="positionGroup">
+                    <label>Position</label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-right" checked /><i></i> Top Right
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-right" /><i></i> Bottom Right
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-left" /><i></i> Bottom Left
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-left" /><i></i> Top Left
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-full-width"/><i></i> Top Full Width
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-full-width"/><i></i> Bottom Full Width
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-top-center"/><i></i> Top Center
+                    </label>
+                    <label class="checkbox checkbox-custom-alt checkbox-custom-sm">
+                        <input type="radio" name="positions" value="toast-bottom-center"/><i></i> Bottom Center
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="showEasing">Show Easing</label>
+                    <input id="showEasing" type="text" placeholder="swing, linear" class="form-control" value="swing" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideEasing">Hide Easing</label>
+                    <input id="hideEasing" type="text" placeholder="swing, linear" class="form-control" value="linear" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="showMethod">Show Method</label>
+                    <input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" class="form-control" value="fadeIn" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideMethod">Hide Method</label>
+                    <input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" class="form-control" value="fadeOut" />
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="showDuration">Show Duration</label>
+                    <input id="showDuration" type="text" placeholder="ms" class="form-control" value="300" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="hideDuration">Hide Duration</label>
+                    <input id="hideDuration" type="text" placeholder="ms" class="form-control" value="1000" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="timeOut">Time out</label>
+                    <input id="timeOut" type="text" placeholder="ms" class="form-control" value="5000" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="extendedTimeOut">Extended time out</label>
+                    <input id="extendedTimeOut" type="text" placeholder="ms" class="form-control" value="1000" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
+                <button type="button" class="btn btn-danger" id="cleartoasts">Clear Toasts</button>
+                <button type="button" class="btn btn-danger" id="clearlasttoast">Clear Last Toast</button>
+            </div>
+        </div>
+
+        <div class="row" style='margin-top: 25px;'>
+            <div class="col-md-12">
+                <pre id='toastrOptions'></pre>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <div id="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="copyright">
+                            <p>&copy; Copyright 2017 by <a href="index.html">IT Consulting</a>. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="social-links" style="margin-top: -10px; margin-right: -30px;">
+                            <li class="twitter-link smallrightmargin">
+                                <a href="#" data-placement="top" class="twitter rotate has-tip" target="_blank" title="Follow Us on Twitter">Twitter</a>
+                            </li>
+                            <li class="facebook-link smallrightmargin">
+                                <a href="#" data-placement="top" class="facebook rotate has-tip" target="_blank" title="Join us on Facebook">Facebook</a>
+                            </li>
+                            <!--<li class="google-link smallrightmargin">
+                                <a href="#" data-placement="top" class="google rotate has-tip" title="Google +" target="_blank">Google</a>
+                            </li>-->
+                            <li class="linkedin-link smallrightmargin">
+                                <a href="#" data-placement="top" class="linkedin rotate has-tip" title="Linkedin" target="_blank">Linkedin</a>
+                            </li>
+                            <!--<li class="pinterest-link smallrightmargin">
+                                <a href="#" data-placement="top" class="pinterest rotate has-tip" title="Pinterest" target="_blank">Pinterest</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/jquery.easing.1.3.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/jquery.fancybox-media.js"></script>
+<script src="js/vendor/jquery.flexslider.js"></script>
+<script src="js/vendor/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="js/vendor/modernizr.custom.js"></script>
+<script src="js/vendor/toastr/toastr.min.js"></script>
+<script src="js/vendor/jquery.isotope.min.js"></script>
+<script src="js/vendor/jquery.magnific-popup.min.js"></script>
+<script src="js/vendor/animate.js"></script>
+<script src="js/custom.js"></script>
+
+<script src="contact/jqBootstrapValidation.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>
