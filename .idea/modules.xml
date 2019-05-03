@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/blog-server/blog-server.iml" filepath="$PROJECT_DIR$/blog-server/blog-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/itc-ci/itc-ci.iml" filepath="$PROJECT_DIR$/itc-ci/itc-ci.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/myRepository.iml" filepath="$PROJECT_DIR$/.idea/myRepository.iml" />
     </modules>
